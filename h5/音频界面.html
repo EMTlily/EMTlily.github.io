@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频播放</title>
+</head>
+<script src="playlist.js"></script>
+<style>
+    .musicbox {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        width: 300px;
+        height: 600px;
+        background-color: darkslategray;
+    }
+    .musicbox .songname {
+        width: 100%;
+        text-align: center;
+    }
+    .musicbox .singer {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .musicbox .jukebox {
+        display: flex;
+        width: 100%;
+    }
+    .musicbox .jukebox .pointer {
+        width: 35px;
+        z-index: 3;
+    }
+    .musicbox .jukebox .pointer img {
+        width: 100%;
+        margin-left: 122px;
+        transform-origin: 75% 10%;
+        transform: rotate(-60deg);
+        transition: all 0.3s;
+    }
+    .musicbox .jukebox .pointer img.active {
+        transform: rotate(-45deg);
+    }
+    .musicbox .jukebox .record {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+    .musicbox .jukebox .record .pic1 {
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        border-radius: 50%;
+    }
+    .musicbox .jukebox .record .pic2 {
+        display: block;
+        position: absolute;
+        width: 135px;
+        border-radius: 50%;
+        top: 76px;
+        left: 36px;
+    }
+    .musicbox .jukebox .record .pic1.active,
+    .musicbox .jukebox .record .pic2.active {
+        animation: myrotate 10s linear infinite;
+        animation-delay: 0.3s;
+    }
+
+    .musicbox .time {
+        display: flex;
+        align-items: center;
+        margin-top: 210px;
+        width: 100%;
+    }
+
+    .musicbox .pace {
+        position: relative;
+        width: 240px;
+        height: 8px;
+        border-radius: 4px;
+        background-color: fuchsia;
+
+    }
+
+    .musicbox .control {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        padding: 40px 0px;
+        cursor: pointer;
+    }
+
+    .musicbox .pace .nowpace {
+        position: relative;
+        width: 0;
+        height: 8px;
+        border-radius: 4px;
+        background-color: gold;
+    }
+
+    .musicbox .pace .nowpace .cur {
+        display: none;
+        pointer-events: all;
+        position: absolute;
+        left: 100%;
+        top: -25%;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: green;
+    }
+    .musicbox .pace:hover .nowpace .cur{
+        display:block;
+    }
+
+    @keyframes myrotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="musicbox">
+        <h3 class="songname">
+            降临（live）
+        </h3>
+        <h5 class="singer">
+            live
+        </h5>
+        <div class="jukebox">
+            <div class="pointer">
+                <img src="https://www.17sucai.com/preview/1160620/2018-10-11/Music-player/images/cd_tou.png">
+            </div>
+            <div class="record">
+                <img src="Snap5.png" class="pic1">
+                <img src="http://p1.music.126.net/-EV4XhJEJn_Ib7ebS1OHhg==/109951164820593469.jpg" class="pic2">
+            </div>
+        </div>
+        <div class="time">
+            <div class="playtime">
+                0:00
+            </div>
+            <div class="pace">
+                <div class="nowpace">
+                    <div class="cur"></div>
+                </div>
+            </div>
+            <div class="songtime"> 3:56</div>
+        </div>
+        <div class="control">
+            <div class="perv">上一曲</div>
+            <div class="step">开始/暂停</div>
+            <div class="next">下一曲</div>
+        </div>
+        <audio  autoplay>
+            <!-- <source src="有里知花 - 涙の物语.mp3" type="audio/mpeg"> -->
+        </audio>
+    </div>
+    <script>
+        var musicbox = document.querySelector('.musicbox');
+        var songname = document.querySelector('.musicbox>.songname');
+        var singer = document.querySelector('.musicbox>.singer');
+        var song = document.querySelector('.musicbox audio');
+        var pace = document.querySelector('.musicbox >.time>.pace');
+        var nowpace = document.querySelector('.musicbox>.time>.pace>.nowpace');
+        var cur = document.querySelector('.musicbox>.time>.pace>.nowpace>.cur');
+        var pointer = document.querySelector('.musicbox>.jukebox>.pointer>img')
+        var pic1 = document.querySelector('.musicbox>.jukebox>.record>.pic1');
+        var pic2 = document.querySelector('.musicbox>.jukebox>.record>.pic2');
+        var playtime = document.querySelector('.musicbox>.time>.playtime');
+        var songtime = document.querySelector('.musicbox>.time>.songtime');
+        var perv = document.querySelector('.musicbox>.control>.perv');
+        var step = document.querySelector('.musicbox>.control>.step');
+        var next = document.querySelector('.musicbox>.control>.next');
+        var bol = false;
+        var move = '';
+        var start = '';
+        var end = '';
+        var now = '';
+        var current = 0;
+        // 初始化
+        function countUrl(id) {
+            return "https://music.163.com/song/media/outer/url?id=" + id + ".mp3";
+        }
+        song.src = countUrl(playlist[0].id);
+        songname.innerText = playlist[0].name;
+        singer.innerText = playlist[0].artists;
+        pic2.src=playlist[0].picUrl;
+        //控制control
+        // 开始暂停
+        step.addEventListener('click', function () {
+            if (song.paused) {
+                song.play();
+            } else {
+                song.pause();
+            }
+        })
+        // 上一曲
+        perv.addEventListener('click', function () {
+            current--;
+            if(current<0){
+                current=playlist.length-1;
+           
+            }
+            changeSong(playlist[current])
+            // song.src = countUrl(playlist[current].id);
+            // songname.innerText = playlist[current].name;
+            // singer.innerText = playlist[current].artists; 
+            // pic2.src=playlist[current].picUrl;
+        })
+        // 下一曲
+        next.addEventListener('click', function () {
+            current++;
+            if(current>playlist.length-1){
+                current=0;
+            
+            }
+            changeSong(playlist[current])
+            // song.src = countUrl(playlist[current].id);
+            // songname.innerText = playlist[current].name;
+            // singer.innerText = playlist[current].artists; 
+            // pic2.src=playlist[current].picUrl;
+        })
+        // 列表顺序播放
+        song.onended = function() {
+                current++;
+                if (current > playlist.length - 1) {
+                    // 重新从0播放
+                    current = 0;
+                }
+                changeSong(playlist[current]);
+            };
+        function changeSong(obj) {
+            // 切换url
+            song.src = countUrl(obj.id);
+            songname.innerText = obj.name;
+            singer.innerText = obj.artists;
+            pic2.src=obj.picUrl;
+            // document.querySelector(".glue img").src = obj.picUrl;
+
+            // document.querySelectorAll("ul.list li").forEach(function(element, index) {
+            //     if (index == current) {
+            //         element.classList.add("playing");
+            //     } else {
+            //         element.classList.remove("playing");
+            //     }
+            // });
+        }
+        // changeSong(playlist[current]);
+        // 点击进度条控制
+        pace.addEventListener('click', function (e) {
+            clearInterval(timer)
+            // cur.style. pointerEvents='none';
+            nowpace.style.width = e.offsetX + 'px';
+            song.currentTime = (nowpace.offsetWidth / this.offsetWidth) * song.duration;
+        })
+        //点击圆点拖动进度条
+        cur.addEventListener('mousedown', function (e) {
+            clearInterval(timer)
+            cur.style.backgroundColor = 'rgb(0,0,0)';
+            start = e.pageX;
+            now = nowpace.offsetWidth;
+            bol = true;
+        })
+        musicbox.addEventListener('mousemove', function (e) {
+            if (bol == true) {
+                cur.style.pointerEvents = 'none';
+                end = e.pageX;
+                move = end - start + now;
+                if (move < 0) {
+                    nowpace.style.width = 0;
+                    return;
+                }
+                if (move > pace.offsetWidth) {
+                    nowpace.style.width = pace.offsetWidth
+                    return;
+                }
+                nowpace.style.width = move + 'px';
+            }
+        })
+        musicbox.addEventListener('mouseup', function () {
+            if(bol==false){
+                clearInterval(timer)
+            cur.style.pointerEvents = 'all';
+            song.currentTime = (nowpace.offsetWidth / pace.offsetWidth) * song.duration;
+            cur.style.backgroundColor = 'green';
+            bol = false;
+            timer = setInterval(changepace, 10);
+            }else{
+                return
+            }
+           
+        })
+        function changepace() {
+            nowpace.style.width = (parseInt(song.currentTime) / parseInt(song.duration) * (pace.offsetWidth)) + 'px';
+        }
+        var timer = setInterval(changepace, 10);
+        song.onplay = function () {
+            // 更改stage 的播放状态 添加class
+            pointer.classList.add("active");
+            pic1.classList.add("active");
+            pic2.classList.add("active");
+            //切换按钮
+        };
+        song.onpause = function () {
+            // 更改stage 的播放状态
+            // stage.classList.remove("active");
+            pointer.classList.remove("active");
+            pic1.classList.remove("active");
+            pic2.classList.remove("active");
+            // 切换按钮
+        };
+        function countTime(n) {
+            var n = Math.floor(n);
+            var m = Math.floor(n / 60);
+            var s = n % 60;
+            m = m > 9 ? m : "0" + m;
+            s = s > 9 ? s : "0" + s;
+            return m + ":" + s;
+        }
+        song.ondurationchange = function () {
+            songtime.innerText = countTime(this.duration);
+        };
+        song.ontimeupdate = function () {
+            // console.log(this.currentTime, this.duration);
+            if (isNaN(this.duration)) {
+                return;
+            }
+            // 更新时间
+            playtime.innerText = countTime(this.currentTime);
+        };
+    </script>
+</body>
+</html>

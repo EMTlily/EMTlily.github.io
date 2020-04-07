@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/newstyle.css">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-default vnavbar" id="home">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- 导航条结束-->
+    <!-- 轮播图开始 -->
+    <div id="carousel-example-generic" class="carousel slide vbanner" data-ride="carousel" data-interval="3000000">
+        <!-- 导航点 -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- 图片轮播 -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="./assets/images/1.jpg" alt="...">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-md-offset-6 gezi">
+                                <h5>The easier way to find models</h5>
+                                <h3>Discover Models or Be Discovered</h3>
+                                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                    autocomplete="off">
+                                    Contact Us
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./assets/images/2.jpg" alt="...">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-md-offset-6 gezi">
+                                <h5>The easier way to find models</h5>
+                                <h3>Discover Models or Be Discovered</h3>
+                                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                    autocomplete="off">
+                                    Contact Us
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./assets/images/4.jpg" alt="...">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-md-offset-6 gezi">
+                                <h5>The easier way to find models</h5>
+                                <h3>Discover Models or Be Discovered</h3>
+                                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                                    autocomplete="off">
+                                    Contact Us
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 左右切换 -->
+        <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a> -->
+    </div>
+    <!-- 轮播图结束 -->
+    <!-- 浏览段一 -->
+    <div class="vseeone" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 left-txt">
+                    <h3>Welcome To Our Models Website</h3>
+                    <h4>Together we’ll make this world <br>more beautiful.</h4>
+                    <div class="row">
+                        <div class=" col-xs-6 botton-txt">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <h5>Make Over</h5>
+                            <p>Ut enim ad minima ven aiam, quis no strum ullam corp oris susc ipit.
+                            </p>
+                        </div>
+                        <div class="col-xs-6 botton-txt">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <h5>Stylist</h5>
+                            <p>Ut enim ad minima ven aiam, quis no strum ullam corp oris susc ipit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <img src="./assets/images/img.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="serives-agile">
+        <div class="container">
+            <div class="row support-bottom text-center">
+                <div class="col-xs-12 col-sm-4 seetwo services-w3ls-grid">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <h4 text-white text-uppercase mt-md-5 mt-4 mb-3>Heading Here</h4>
+                    <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+                </div>
+                <div class="col-xs-12 col-sm-4 seetwo services-w3ls-grid">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <h4 text-white text-uppercase mt-md-5 mt-4 mb-3>Heading Here</h4>
+                    <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+                </div>
+                <div class="col-xs-12 col-sm-4 seetwo services-w3ls-grid">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <h4 text-white text-uppercase mt-md-5 mt-4 mb-3>Heading Here</h4>
+                    <p>Ut enim ad minima veniam, quis nostrum ullam corporis suscipit laboriosam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vseethree" id="blog">
+        <div class="container">
+            <div class="title text-center ">
+                <h3>Blog Posts</h3>
+                <p>Ut enim ad minim veniam, quis nostrud ullam.</p>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 view-three">
+                    <div class="posts-top">
+                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            <img src="./assets/images/blog1.jpg" alt="">
+                        </a>
+                        <h3>
+                            13
+                            <span>Sep</span>
+                        </h3>
+                    </div>
+                    <div class="posts-w3ls-bottom py-4">
+                        <h4 class="mb-2">Sit accus antium</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    20 Likes
+                                </a>
+                            </li>
+                            <li class="mx-3">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    48 Comments
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="mt-3">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis
+                            nostrud exercitation.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 view-three">
+                    <div class="posts-top">
+                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            <img src="./assets/images/blog2.jpg" alt="">
+                        </a>
+                        <h3>
+                            13
+                            <span>Sep</span>
+                        </h3>
+                    </div>
+                    <div class="posts-w3ls-bottom py-4">
+                        <h4 class="mb-2">Sit accus antium</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    20 Likes
+                                </a>
+                            </li>
+                            <li class="mx-3">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    48 Comments
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="mt-3">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis
+                            nostrud exercitation.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 view-three">
+                    <div class="posts-top">
+                        <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            <img src="./assets/images/blog3.jpg" alt="">
+                        </a>
+                        <h3>
+                            13
+                            <span>Sep</span>
+                        </h3>
+                    </div>
+                    <div class="posts-w3ls-bottom py-4">
+                        <h4 class="mb-2">Sit accus antium</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    20 Likes
+                                </a>
+                            </li>
+                            <li class="mx-3">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    48 Comments
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="mt-3">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis
+                            nostrud exercitation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="vseefour py-5 " id="middle">
+        <div class="container py-xl-5 py-lg-3">
+            <div class="row">
+                <div class="col-xs-5">
+                    <span class="w3-line text-uppercase">Fashion Look</span>
+                    <h3 class="agile-title">Creating Your Beauty Image</h3>
+                    <p class="text-botm">Donec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus
+                        at</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- .......... -->
+    <div class="gallery" id="gallery">
+        <div class="container py-xl-5 py-lg-3">
+            <div class="title text-center mb-5">
+                <h3>Our Gallery</h3>
+                <p>Ut enim ad minim veniam, quis nostrud ullam.</p>
+            </div>
+            <div class="news-grils gal ">
+                <div class="show-grils list-1">
+                    <div class="gril-1 pic-gril"><a href="#gal1">
+                            <img src="./assets/images/g1.jpg" alt="news images" class="img-fluid">
+                        </a></div>
+                    <div class="gril-2 pic-gril"><a href="#gal2">
+                            <img src="./assets/images/g2.jpg" alt="news images">
+                        </a></div>
+                    <div class="gril-3 pic-gril"><a href="">
+                            <img src="./assets/images/g3.jpg" alt="">
+                        </a></div>
+                </div>
+                <div class="news-grils gal">
+                    <div class="show-grils list-2">
+                        <div class="gril-1 pic-gril"><a href="#gal1">
+                                <img src="./assets/images/g4.jpg" alt="news images" class="img-fluid">
+                            </a></div>
+                        <div class="gril-1 pic-gril"><a href="#gal1">
+                                <img src="./assets/images/g5.jpg" alt="news images" class="img-fluid">
+                            </a></div>
+                        <div class="gril-1 pic-gril"><a href="#gal1">
+                                <img src="./assets/images/g6.jpg" alt="news images" class="img-fluid">
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .................... -->
+    <div class="newsletter_right_w3agile" id="newsletter">
+        <div class="container">
+            <div class="title news-title text-center">
+                <h3>
+                    Our Newsletter
+                </h3>
+                <p>Ut enim ad minim veniam, quis nostrud ullam.</p>
+            </div>
+           <div class="n-right-w3ls">
+               <form action="#" method="POST">
+                   <div class="post-line">
+                       <div class="name">
+                           <input type="text" name="NAME" placeholder="Name" required>
+                       </div>
+                       <div class="name">
+                        <input type="email" name="Email" placeholder="Email Address" required>
+                    </div>
+                    <div class="name">
+                        <input type="submit"  value="Subscribe">
+                    </div>
+                   </div>
+               </form>
+           </div>
+        </div>
+    </div>
+      <div class="address">
+          <div class="title text-center">
+              <h3>Contact Us</h3>
+              <p>Ut enim ad minim veniam, quis nostrud ullam.</p>
+          </div>
+          <div class="mesages">
+           <div class="left-mesages">
+            <div class="address-left">
+                <h4>Address</h4>
+                <p>123 San Sebastian, Hill Towers 4567 New York City USA.</p>
+            </div>
+            <div class="address-left">
+                <h4>Phone</h4>
+                <p>+222 111 333 4444</p>
+                <p>+222 111 333 5555</p>
+            </div>
+            <div class="address-left">
+                <h4>Mail</h4>
+                <p><a href=""> Mail1@example.com</a></p>
+                <p><a href=""> Mail2@example.com</a></p>
+            </div>
+           </div>
+            <div class="address-right">
+                <h4>Get In Touch</h4>
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                     <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div> <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="textarea" placeholder="Message" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="SEND">
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    <!-- .......................... -->
+<div class="map"></div>
+<!-- .................... -->
+<footer class="footer-emp-w3ls">
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-lg-3 col-sm-6 footer-grid-wthree">
+                <h3>Who We Are</h3>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+							aperiam, eaque ipsa quae.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 footer-grid-wthree">
+                <h3>Who We Are</h3>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+							aperiam, eaque ipsa quae.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 footer-grid-wthree">
+                <h3>Who We Are</h3>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+							aperiam, eaque ipsa quae.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 footer-grid-wthree">
+                <h3>
+                    Quick Links
+                </h3>
+                <ul class="links list-unstyled">
+                    <li>
+                        <a href="newindex.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#blog">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#gallery">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#newsletter">Contact Us</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copy-right-top text-center border-top mt-5">
+        <a href="#home" class="move-top text-center mt-3"></a>
+        <p class="copy-right text-center">
+            Copyright © 2019.Company name All rights reserved.More Templates 
+            <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+            - Collect from 
+            <a href="http://www.cssmoban.com/" target="_blank" title="网页模板">网页模板</a>
+        </p>
+    </div>
+</footer>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

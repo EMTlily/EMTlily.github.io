@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<style>
+    .box {
+
+        background-image: url(./ara.jpg);
+        /* background-position: ; */
+        width: 300px;
+        height: 450px;
+        /* background-position: center; */
+        background-size: cover;
+        position: relative;
+        background-repeat:no-repeat;
+        padding: 0;
+
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <script>
+        $('.box').mouseenter(function (e) {
+            var find = $('<div class="v-find"></div>');
+            $(this).append(find);
+            find.css({
+                width: '50px',
+                height: '50px',
+                position: 'absolute',
+                backgroundColor: 'rgba(255,255,0, 0.2)',
+                top: 0,
+                left: 0,
+                zIndex: 2
+            })
+          
+        })
+        $('.box').mousemove(function (e) {
+                var left = e.pageX - 25;
+                var ttop = e.pageY - 25;
+                if(left<0){
+                    left=0
+                }
+                if(ttop<0){
+                    ttop=0
+                }
+                if (left > 250) {
+                    left = 250;
+                }
+                if (ttop > 400) {
+                    ttop = 400;
+                }
+                $('.v-find').css({ left: left, top: ttop }).nextAll().remove()
+                var bleft=(left/300*100);
+               
+                var btop=(ttop/450*100);
+                var bigbox=$('<div class="big-box"></div>')
+                $('.box').append(bigbox)
+                bigbox.css({
+                    width:400,
+                    height:500,
+                    top:0,
+                    left:330,
+                    position: 'absolute',
+                    backgroundImage:'url(./ara.jpg)' ,
+                    backgroundRepeat:'no-repeact',
+                    // backgroundPosition:parseInt(bleft)+'px'+ parseInt(btop)+'px',
+                    backgroundPosition:bleft+'%'+ btop+'%'
+                })
+               
+            })
+            $('.box').mouseleave(function(){
+                $(this).children().remove()
+            }
+              
+            )
+    </script>
+</body>
+
+</html>

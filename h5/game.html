@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<style>
+    body {
+        background: pink;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        background-color: #fcd;
+    }
+
+    img {
+        position: fixed;
+        left: 10%;
+        top: 20%;
+    }
+
+    button {
+        padding: 15px 40px;
+        margin: 0;
+        border: none;
+        outline: none;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        overflow: hidden;
+        font-size: larger;
+        font-weight: 600;
+    }
+
+    button span {
+        display: block;
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: chartreuse;
+        z-index: -1;
+        pointer-events: none;
+        border-radius: 50%;
+        transition: all 0.8s;
+        transform: scale(0);
+
+    }
+
+    button:hover span {
+        transform: scale(300);
+    }
+    .btn{
+        color: purple;
+    }
+    .text{
+        color: yellowgreen;
+    }
+</style>
+
+<body>
+    <button class="btn">
+        点击开始
+        <span></span>
+    </button>
+    <button class="text">
+        点击验证
+        <span></span>
+    </button>
+    <!-- <input type="button" value="点击开始" class="btn"> -->
+    <!-- <input type="button" value="验证" class="text"> -->
+    <img src="http://i0.hdslb.com/bfs/article/2f6408c2d4cca80c6b2b0a68d035946dfb8abfa1.jpg" alt="">
+    <div class="box">
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+        <div class="pic" draggable="true"></div>
+    </div>
+    <style>
+        .box {
+            margin: auto;
+            display: flex;
+            width: 279px;
+            height: 312px;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            /* background-color: limegreen; */
+        }
+
+        .box .pic {
+            width: 33%;
+            height: 33%;
+            background-color: magenta;
+            background-size: 300%;
+            background-image: url(http://i0.hdslb.com/bfs/article/2f6408c2d4cca80c6b2b0a68d035946dfb8abfa1.jpg);
+        }
+    </style>
+    <script>
+        $("button").mousemove(function (e) {
+            $("span").css({ left: e.offsetX, top: e.offsetY })
+        })
+        var pics = document.querySelectorAll('.box>.pic');
+        var box = document.querySelector('.box');
+        var str = document.querySelector('.btn');
+        var answer = document.querySelector('.text')
+        init()
+        function init() {
+            //随机排列
+            var arr = [];
+            for (var i = 0; i < 9; i++) {
+                var num = Math.floor(Math.random() * 9);
+                if (arr.length > 0) {
+                    while (arr.indexOf(num) > -1) {
+                        num = Math.floor(Math.random() * 9);
+                    }
+                }
+                arr.push(num);
+            }
+            for (var i = 0; i < 9; i++) {
+                var index = arr[i];
+                var row = Math.floor(index / 3)
+                var clu = Math.floor(index % 3)
+                pics[i].index = index;
+                // console.log(pics[i])
+                pics[i].style.backgroundPositionY = (row * (-104)) + 'px';
+                pics[i].style.backgroundPositionX = (clu * (-93)) + 'px';
+            }
+        }
+        var dragged;
+        var dragging;
+        var strindex;
+        var endindex;
+        for (var i = 0; i < pics.length; i++) {
+            pics[i].addEventListener("drag", function (event) {
+                // console.log(this)
+
+            }, false);
+            pics[i].addEventListener("dragstart", function (event) {
+                dragged = this;
+                //    num=dragged.index
+                console.log(dragged.index)
+
+                // console.log(this)
+            }, false);
+            pics[i].addEventListener("dragover", function (event) {
+                event.preventDefault();
+                dragging = event.target;
+
+                // console.log(dragging.index)
+            }, false);
+            pics[i].addEventListener("drop", function (event) {
+                event.preventDefault();
+                num = dragged.index
+                dragged.index = dragging.index;
+                dragging.index = num;
+                //重新定义行列位置,被覆盖
+                var row = Math.floor(dragging.index / 3)
+                var clu = Math.floor(dragging.index % 3)
+                dragging.style.backgroundPositionY = (row * (-104)) + 'px';
+                dragging.style.backgroundPositionX = (clu * (-93)) + 'px';
+                //被抓取
+                var row = Math.floor(dragged.index / 3)
+                var clu = Math.floor(dragged.index % 3)
+                dragged.style.backgroundPositionY = (row * (-104)) + 'px';
+                dragged.style.backgroundPositionX = (clu * (-93)) + 'px';
+            }, false);
+
+        }
+        function succse() {
+            var answer = 0;
+            for (var i = 0; i < pics.length; i++) {
+                var index = i;
+                var textnum = i;
+                if (textnum == pics[index].index) {
+                    answer += 0;
+                } else {
+                    answer += 1;
+                }
+            }
+            if (answer == 0) {
+                alert('lis莉莉丝')
+            }
+            else {
+                alert('不对')
+            }
+        }
+        str.addEventListener('click', function () {
+            init();
+        })
+        answer.addEventListener('click', function () {
+            succse()
+            init();
+
+        })
+    </script>
+</body>
+
+</html>
