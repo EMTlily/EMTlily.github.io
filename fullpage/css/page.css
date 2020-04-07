@@ -1,0 +1,514 @@
+/* 导航点 */
+#fp-nav ul li a span {
+    background: chartreuse;
+}
+
+#fp-nav ul li a.active span {
+    background: orangered;
+}
+.next{
+    right: 10%;
+    bottom: 10%;
+    width: 174px;
+    height: 61px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 999;
+    background-image: url(../images/next.png);
+    animation: nexthit 2s linear infinite;
+}
+@keyframes nexthit{
+    0%{
+        bottom: 10%;
+    }
+    50%{
+        bottom: 8%;
+    }
+    100%{
+        bottom: 10%;
+    }
+}
+/* 导航点 */
+/* 固定广告 */
+.fixinit {
+    position: fixed;
+    z-index : 999;
+    top     : 5%;
+    right   : 5%;
+}
+
+/* 第一页 */
+.page1 {
+    background: #fadd67 url(../images/page1bg.png) no-repeat center bottom;
+}
+
+.page1 .flyboll {
+    position : absolute;
+    right    : 20%;
+    top      : 10%;
+    animation: flybool 3s linear infinite;
+}
+
+.page1 .sofa {
+    position   : absolute;
+    left       : 50%;
+    margin-left: -200px;
+    bottom     : 50%;
+    animation  : sofa 2s linear infinite;
+}
+
+.page1 .icons {
+    position   : absolute;
+    left       : 50%;
+    margin-left: -400px;
+    bottom     : 20%;
+}
+
+@keyframes flybool {
+    50% {
+        top: 20%
+    }
+
+    100% {
+        top: 10%
+    }
+}
+
+@keyframes sofa {
+    50% {
+        bottom: 55%
+    }
+
+    100% {
+        bottom: 50%
+    }
+}
+
+/* 第一页结束 */
+/* 第二页 */
+.page2 {
+    z-index   : 6;
+    background: #84a2d4 url(../images/page2bg.png) no-repeat center bottom;
+}
+
+.page2 .computer {
+    position : absolute;
+    width    : 1100px;
+    height   : 600px;
+    left     : 50%;
+    transform: translateX(-50%);
+    bottom   : 0;
+}
+
+.page2 .computer .search {
+    position  : absolute;
+    right     : 0%;
+    bottom    : 50%;
+    width     : 222px;
+    height    : 45px;
+    background: url(../images/search.png) no-repeat center;
+    display   : none;
+}
+
+.page2 .computer .search .search-words {
+    margin    : auto;
+    margin-top: 5px;
+    opacity   : 0;
+}
+
+.page2 .computer .search-copy,
+.page2 .computer .sofas,
+.page2 .computer .words-01,
+.page2 .computer .words-02 {
+    position : absolute;
+    left     : 50%;
+    transform: translate(-50%);
+}
+
+.page2 .computer .search-copy {
+    bottom      : 50%;
+    display     : none;
+    /* translate: 50%; */
+}
+
+.page2 .computer .sofas {
+    bottom   : 35%;
+    transform: translate(-50%);
+    opacity  : 0;
+    width    : 0;
+    height   : 0;
+}
+
+.page .computer .sofas.sofasanimate {
+    animation: sofas 1s;
+}
+
+.page2 .computer .words-02 {
+    opacity: 0;
+}
+
+.page2 .computer .white {
+    width           : 104px;
+    height          : 104px;
+    position        : absolute;
+    left            : 50%;
+    bottom          : 54%;
+    transform       : translate(-103%);
+    background-color: #fff;
+    display         : none;
+}
+
+.page2 .computer .movesofa {
+    width    : 104px;
+    position : absolute;
+    left     : 50%;
+    bottom   : 54%;
+    transform: translate(-103%);
+    display  : none;
+}
+
+/* 第二页结束 */
+/* 第三页开始 */
+.page3 {
+    z-index   : 5;
+    background: #ef674d url(../images/);
+}
+
+.page3 .mian {
+    width     : 990px;
+    height    : 600px;
+    position  : absolute;
+    left      : 50%;
+    bottom    : 0;
+    transform : translate(-50%);
+    background: url(../images/main.png) no-repeat center;
+}
+
+.page3 .mian .sele,
+.page3 .mian .sele-02 {
+    width    : 292px;
+    height   : 131px;
+    position : absolute;
+    left     : 50%;
+    transform: translate(15%);
+    bottom   : 28%;
+}
+
+.page3 .mian .sele {
+    background: url(../images/img-01.gif);
+}
+
+.page3 .mian .sele-02 {
+    display   : none;
+    background: url(../images/img-01-a.gif);
+}
+
+.page3 .mian .movesofa-02 {
+    width    : 250px;
+    position : absolute;
+    left     : 50%;
+    bottom   : 32%;
+    transform: translate(-100%);
+    display  : none;
+}
+
+.page3 .mian .add {
+    width     : 218px;
+    height    : 58px;
+    position  : absolute;
+    background: url(../images/btn-01.gif);
+    left      : 50%;
+    transform : translate(20%);
+    bottom    : 10%;
+}
+
+.page3 .mian .add:hover {
+    background: url(../images/btn-01-a.gif);
+}
+
+/* 第三页结束 */
+.page4 {
+    z-index   : 4;
+    background: #fed url(../images/page4bg.png) no-repeat center bottom;
+}
+
+.page4 .car,
+.page4 .movecar {
+    width    : 407px;
+    height   : 346px;
+    position : absolute;
+    left     : 50%;
+    transform: translate(-50%);
+    bottom   : 10%;
+
+}
+
+.page4 .car {
+    background: url(../images/car.png);
+}
+
+.page4 .movecar {
+    display      : none;
+    /* background: url(../images/car-06.png); */
+}
+
+.page4 .movecar .movepart-01,
+.page4 .movecar .movepart-02 {
+    position: absolute;
+}
+
+.page4 .movecar .movepart-01 {
+    transform: translateX(70%) translateY(-25%);
+}
+
+.page4 .note {
+    display   : none;
+    position  : absolute;
+    width     : 283px;
+    height    : 270px;
+    left      : 50%;
+    bottom    : 30%;
+    transform : translate(-50%);
+    background: url(../images/t1.png);
+}
+
+.page4 .note .information {
+    display  : none;
+    position : absolute;
+    left     : 50%;
+    bottom   : 60%;
+    transform: translate(-50%);
+}
+
+.page4 .could {
+    width     : 100%;
+    height    : 120px;
+    background: url(../images/cloud.png) no-repeat center;
+    position  : absolute;
+    bottom    : 80%;
+    animation : could 60s linear infinite;
+}
+
+.page4 .could .could-02 {
+    position: absolute;
+    left    : 50%;
+}
+
+.page4 .could .could-06 {
+    position: absolute;
+    left    : 25%;
+}
+
+.page4 .word-04 {
+    position : absolute;
+    display  : none;
+    left     : 50%;
+    transform: translate(-50%);
+    bottom   : 75%;
+}
+
+.word-04-a {
+    animation: word4 .5s linear;
+}
+
+@keyframes word4 {
+    100% {
+        transform: translateZ(10px) rotateY(360deg);
+    }
+}
+
+@keyframes could {
+    0% {
+        left: 0;
+    }
+
+    25% {
+        left: 60%;
+    }
+
+    50% {
+        left: 0;
+    }
+
+    75% {
+        left: -60%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+/* 第四页结束 */
+.page5 {
+    z-index   : 3;
+    background: #d04759 url(../images/page5bg.png);
+}
+
+.page5 .card {
+    position  : absolute;
+    left      : 50%;
+    bottom    : 30%;
+    transform : translate(-120%);
+    width     : 358px;
+    height    : 221px;
+    background: url(../images/card.png);
+}
+
+.page5 .order {
+    position : absolute;
+    left     : 50%;
+    bottom   : 40%;
+    transform: translate(-210%);
+}
+
+.page5 .page5sofa {
+    position : absolute;
+    bottom   : 100%;
+    left     : 50%;
+    transform: translate(-160%);
+}
+
+.page5 .box {
+    overflow : hidden;
+    position : absolute;
+    width    : 300px;
+    height   : 650px;
+    left     : 50%;
+    transform: translate(50%);
+    bottom   : 0%;
+}
+
+.page5 .box .mouse,
+.page5 .box .mouse-a {
+    position: absolute;
+    left    : 30%;
+    bottom  : 25%;
+    width   : 205px;
+    height  : 819px;
+}
+
+.page5 .box .hand {
+    position  : absolute;
+    left      : 22%;
+    bottom    : -60%;
+    width     : 170px;
+    height    : 375px;
+    background: url(../images/hand-05.png);
+
+}
+
+.page5 .box .mouse {
+    background: url(../images/mouse-05.png);
+}
+
+.page5 .box .mouse-a {
+    display   : none;
+    background: url(../images/mouse-05-a.png);
+}
+
+.page5 .word-05 {
+    opacity : 0;
+    position: absolute;
+    bottom  : 85%;
+    left    : 20%;
+}
+
+.word-05-a {
+    animation: word5 1s linear forwards;
+}
+
+@keyframes word5 {
+    100% {
+        opacity  : 1;
+        transform: rotateY(360deg)
+    }
+}
+
+/* 第五页 结束*/
+.page6 {
+    z-index   : 2;
+    background: #84d9ed url(../images/page6bg.png) no-repeat 0% 100%;
+}
+
+.page6 .package {
+    position: absolute;
+    left    : 25%;
+    bottom  : 80%;
+}
+
+.page6 .car-06 {
+    position: absolute;
+    bottom  : 0%;
+    left    : 45%;
+}
+
+.page6 .courier {
+    position: absolute;
+    left    : 45%;
+    bottom  : 21%;
+    width   : 0;
+}
+
+.page6 .door {
+    opacity  : 0;
+    position : absolute;
+    left     : 50%;
+    transform: translate(421%);
+    bottom   : 22%;
+}
+
+.page6 .woman {
+    position: absolute;
+    display : none;
+    width   : 40px;
+    right   : 10%;
+    bottom  : 22%;
+}
+
+.page6 .hello {
+    position: absolute;
+    display : none;
+    left    : 60%;
+    bottom  : 60%;
+}
+
+.page6 .word-06 {
+    display : none;
+    position: absolute;
+    bottom  : 70%;
+    left    : 20%;
+}
+
+.word-06-a {
+    animation: feir 2s linear;
+}
+
+@keyframes feir {
+    50% {
+        transform: skewX(30deg)
+    }
+
+    100% {
+        transform: skewX(-30deg);
+    }
+}
+
+/* 第六页结束 */
+.page7 {
+    background: url(../images/page8bg.png);
+}
+.page7 .button7{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom:40%;
+}
+.page7 .hand7{
+    position: absolute;
+}
+.page7 .again{
+    position: absolute;
+    bottom: 25%;
+    right: 20%;
+}
